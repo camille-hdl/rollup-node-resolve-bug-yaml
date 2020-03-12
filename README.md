@@ -4,6 +4,13 @@
 * `npm run build`
 * `npm run serve`
 
+Circular dependency warning:
+
+```
+(!) Circular dependency
+node_modules/yaml/browser/dist/schema/Collection.js -> node_modules/yaml/browser/dist/schema/Pair.js -> node_modules/yaml/browser/dist/schema/Collection.js
+```
+
 Bug :
 
 ```js
@@ -56,6 +63,13 @@ YAML.stringify({ my: "input" }); // error
 
 With a different node-resolve config, there is another bug (related to https://github.com/rollup/rollup/issues/3054 ):
 
+Circular dependency warning:
+
+```
+(!) Circular dependencies
+node_modules/yaml/dist/schema/Collection.js -> node_modules/yaml/dist/schema/Pair.js -> node_modules/yaml/dist/schema/Collection.js
+node_modules/yaml/dist/schema/Collection.js -> node_modules/yaml/dist/schema/Pair.js -> /Users/camille/git/bug-rollup-yaml/node_modules/yaml/dist/schema/Collection.js?commonjs-proxy -> node_modules/yaml/dist/schema/Collection.js
+```
 
 ```js
 // in rollup.config.js
